@@ -1,6 +1,7 @@
 # README
 
 
+eos version v1.4.1
 
 ### first
 `cleos wallet create -n default`
