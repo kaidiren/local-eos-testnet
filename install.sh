@@ -18,19 +18,20 @@ cleos push action eosio.token issue '{"to":"eosio","quantity":"1000000000.0000 E
 cleos set contract eosio contracts/eosio.system
 sleep 1
 
-cleos system newaccount eosio dice EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV --stake-net "1000.0000 EOS" --stake-cpu "1000.0000 EOS" --buy-ram-kbytes "1280 KiB"
+cleos system newaccount eosio eosdice EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV --stake-net "1000.0000 EOS" --stake-cpu "1000.0000 EOS" --buy-ram-kbytes "12800 KiB"
 
-cleos push action eosio.token transfer '{"from": "eosio", "to":"dice","quantity":"1000000.0000 EOS","memo":"give"}' -p eosio
-
-#cleos system buyram dice eosio "90000 EOS"
+cleos push action eosio.token transfer '{"from": "eosio", "to":"eosdice","quantity":"1000000.0000 EOS","memo":"give"}' -p eosio
 
 cleos system regproducer eosio EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
-
-#cleos system delegatebw eosio eosio "300000000 EOS" "300000000 EOS"
 
 cleos system voteproducer prods eosio eosio
 
 cleos system listproducers
 
+cleos system newaccount eosio gamerevealer EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV --stake-net "1000.0000 EOS" --stake-cpu "1000.0000 EOS" --buy-ram-kbytes "12800 KiB"
+cleos system newaccount eosio fairdicelogs EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV --stake-net "1000.0000 EOS" --stake-cpu "1000.0000 EOS" --buy-ram-kbytes "12800 KiB"
+
 cleos get account eosio
-cleos get account dice
+cleos get account eosdice
+
+cleos set account permission eosdice active '{"threshold": 1,"keys": [{"key":"EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV", "weight":1}],"accounts": [{"permission":{"actor":"eosdice","permission":"eosio.code"},"weight":1}]}' owner -p eosdice@owner

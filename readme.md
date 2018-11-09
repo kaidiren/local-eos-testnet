@@ -1,7 +1,8 @@
 # README
 
+eos version: `v1.4.1`
 
-eos version v1.4.1
+build eos with: `./eosio_build.sh -s "EOS"`
 
 ### first
 `cleos wallet create -n default`
