@@ -20,15 +20,20 @@ sleep 1
 
 cleos system regproducer eosio EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
 
-cleos system newaccount eosio eosio112233 EOS78yrx7KJEvo7UWxosdSykJCcmSyEFeDzykuYBtTCwTvZir9Wn1 EOS6ZzHwHTHoehE2bFbydf2mSXxLksY8LYE2J5paf3iXyGsbuvtgX --stake-net "1000.0000 EOS" --stake-cpu "1000.0000 EOS" --buy-ram-kbytes "12800 KiB"
-cleos system newaccount eosio eosio223344 EOS78yrx7KJEvo7UWxosdSykJCcmSyEFeDzykuYBtTCwTvZir9Wn1 EOS6ZzHwHTHoehE2bFbydf2mSXxLksY8LYE2J5paf3iXyGsbuvtgX --stake-net "1000.0000 EOS" --stake-cpu "1000.0000 EOS" --buy-ram-kbytes "12800 KiB"
+cleos system newaccount eosio eosio112233 EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV --stake-net "1000.0000 EOS" --stake-cpu "1000.0000 EOS" --buy-ram-kbytes "12800 KiB"
+cleos system newaccount eosio eosio223344 EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV --stake-net "1000.0000 EOS" --stake-cpu "1000.0000 EOS" --buy-ram-kbytes "12800 KiB"
+cleos system newaccount eosio game EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV --stake-net "1000.0000 EOS" --stake-cpu "1000.0000 EOS" --buy-ram-kbytes "12800 KiB"
+cleos system newaccount eosio player EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV --stake-net "1000.0000 EOS" --stake-cpu "1000.0000 EOS" --buy-ram-kbytes "12800 KiB"
 
 
 cleos push action eosio.token transfer '{"from": "eosio", "to":"eosio112233","quantity":"10000.0000 EOS","memo":"give"}' -p eosio
 cleos push action eosio.token transfer '{"from": "eosio", "to":"eosio223344","quantity":"10000.0000 EOS","memo":"give"}' -p eosio
+cleos push action eosio.token transfer '{"from": "eosio", "to":"player","quantity":"10000.0000 EOS","memo":"give"}' -p eosio
+cleos push action eosio.token transfer '{"from": "eosio", "to":"game","quantity":"10000.0000 EOS","memo":"give"}' -p eosio
 
+cleos set account permission game active '{"threshold": 1,"keys": [{"key":"EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV", "weight":1}],"accounts": [{"permission":{"actor":"game","permission":"eosio.code"},"weight":1}]}' owner -p game@owner
 
-cleos system newaccount eosio vote EOS78yrx7KJEvo7UWxosdSykJCcmSyEFeDzykuYBtTCwTvZir9Wn1 EOS6ZzHwHTHoehE2bFbydf2mSXxLksY8LYE2J5paf3iXyGsbuvtgX --stake-net "100000000.0000 EOS" --stake-cpu "100000000.0000 EOS" --buy-ram-kbytes "12800 KiB"
+cleos system newaccount eosio vote EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV --stake-net "100000000.0000 EOS" --stake-cpu "100000000.0000 EOS" --buy-ram-kbytes "12800 KiB"
 cleos system regproducer vote EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
 cleos system voteproducer prods eosio eosio
 cleos system unregprod vote
